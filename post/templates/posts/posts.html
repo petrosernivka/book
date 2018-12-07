@@ -1,13 +1,14 @@
-{% extends "posts/wrapper.html" %}
+{% extends "wrapper.html" %}
+{% load staticfiles %}
 
 {% block content %}
   {% csrf_token %}
   {% for post in posts %}
-      <h6>Дата публікації:{{ post.post_date }}</h6>
+      <h6>{{ post.post_date }}</h6>
       <h4><a href="/posts/get/{{ post.id }}">{{ post.post_title }}</a></h4>
       <p>{{ post.post_text }}</p>
-      <p>Сподобалось:{{ post.post_likes }}</p>
-      <p>Не спободалось:{{ post.post_unlikes }}</p>
+      <p><img src="{% static "like.png" %}" width="25px" height="25px">{{ post.post_likes }}</p>
+      <p><img src="{% static "unlike.png" %}" width="25px" height="25px">{{ post.post_unlikes }}</p>
       <hr>
   {% endfor %}
 {% endblock %}
