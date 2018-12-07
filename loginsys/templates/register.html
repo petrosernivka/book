@@ -1,0 +1,11 @@
+{% extends "wrapper.html" %}
+
+{% block login %}
+  <div class="container">
+    <form action="/auth/register/" method="post">
+      {% csrf_token %}
+      {{ form }}
+      <input class="btn btn-primary" type="submit" value="Зареєструватися">
+    </form>
+  </div>
+{% endblock %}
