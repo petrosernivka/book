@@ -23,9 +23,15 @@ def post(request, post_id=1):
 
 def addlike(request, post_id):
     try:
-        post = Post.objects.get(id=post_id)
-        post.post_likes += 1
-        post.save()
+        if post_id + "l" not in request.COOKIES:
+            post = Post.objects.get(id=post_id)
+            post.post_likes += 1
+            post.save()
+            response = redirect('/')
+            response.set_cookie(post_id + "l", "cookie_like")
+            return response
+        else:
+            redirect('/')
     except ObjectDoesNotExist:
         raise Http404
     return redirect('/')
@@ -33,9 +39,15 @@ def addlike(request, post_id):
 
 def addunlike(request, post_id):
     try:
-        post = Post.objects.get(id=post_id)
-        post.post_unlikes += 1
-        post.save()
+        if post_id + "u" not in request.COOKIES:
+            post = Post.objects.get(id=post_id)
+            post.post_unlikes += 1
+            post.save()
+            response = redirect('/')
+            response.set_cookie(post_id + "u", "cookie_unlike")
+            return response
+        else:
+            redirect('/')
     except ObjectDoesNotExist:
         raise Http404
     return redirect('/')
