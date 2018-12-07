@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Стіна</title>
+</head>
+<body>
+{% for post in posts %}
+    <h6>Дата публікації:{{ post.post_date }}</h6>
+    <h4><a href="/posts/get/{{ post.id }}">{{ post.post_title }}</a></h4>
+    <p>{{ post.post_text }}</p>
+    <p>Сподобалось:{{ post.post_likes }}</p>
+    <p>Не спободалось:{{ post.post_unlikes }}</p>
+    <hr>
+{% endfor %}
+</body>
+</html>
