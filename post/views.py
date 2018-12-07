@@ -7,4 +7,4 @@ def posts(request):
     return render(request, 'posts/posts.html', context={'posts': Post.objects.all()})
 
 def post(request, post_id=1):
-    return rendere(request, 'posts/post.html', context={'post': Post.objects.get(id=post_id), 'comments': Comments.objects.filter(comments_posts_id=post_id)})
+    return render(request, 'posts/post.html', context={'post': Post.objects.get(id=post_id), 'comments': Comments.objects.filter(comments_post_id=post_id)})
