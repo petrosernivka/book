@@ -54,10 +54,12 @@ def addunlike(request, post_id):
 
 
 def addcomment(request, post_id):
-    if request.POST:
+    if request.POST and ('pause' not in request.session):
         form = CommentForm(request.POST)
         if form.is_valid():
             comment = form.save(commit=False)
             comment.comments_post = Post.objects.get(id=post_id)
             form.save()
+            request.session.set_expiry(10)
+            request.session['pause'] = True
     return redirect('/posts/get/{}/'.format(post_id))
