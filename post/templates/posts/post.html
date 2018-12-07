@@ -10,4 +10,9 @@
   {% for comment in comments %}
       <p>{{ comment.comments_text }}</p>
   {% endfor %}
+  <form action="/posts/addcomment/{{ post.id }}/" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" class="btn btn-primary" value="Додати коментар">
+  </form>
 {% endblock %}
