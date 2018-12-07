@@ -2,13 +2,14 @@ from django.shortcuts import render, redirect
 from django.http.response import Http404
 from django.core.exceptions import ObjectDoesNotExist
 from django.template.context_processors import csrf
+from django.contrib import auth
 from post.models import Post, Comments
 from post.forms import CommentForm
 
 # Create your views here.
 
 def posts(request):
-    return render(request, 'posts/posts.html', context={'posts': Post.objects.all()})
+    return render(request, 'posts/posts.html', context={'posts': Post.objects.all(), 'username': auth.get_user(request).username})
 
 
 def post(request, post_id=1):
@@ -18,6 +19,7 @@ def post(request, post_id=1):
     args['post'] = Post.objects.get(id=post_id)
     args['comments'] = Comments.objects.filter(comments_post_id=post_id)
     args['form'] = comment_form
+    args['username'] = auth.get_user(request).username
     return render(request, 'posts/post.html', context=args)
 
 

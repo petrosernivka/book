@@ -7,6 +7,14 @@
 </head>
 <body>
   <div class="container">
+    <ul class="nav nav-pills">
+      <li role="presentation" class="active"><a href="/">Головна</a></li>
+      {% if username %}
+        <li role="presentation"><a href="/auth/login/">Вийти ({{ username }})</a></li>
+      {% else %}
+        <li role="presentation"><a href="/auth/login/">Ввійти</a></li>
+      {% endif %}
+    </ul>
     {% block content %}
     {% endblock %}
   </div>

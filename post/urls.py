@@ -18,7 +18,6 @@ from django.urls import path
 from .views import *
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
     path('posts/all/', posts),
     path('posts/get/<post_id>/', post),
     path('posts/addlike/<post_id>/', addlike),
