@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from django.shortcuts import render, redirect
 from django.http.response import Http404
 from django.core.exceptions import ObjectDoesNotExist
