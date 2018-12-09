@@ -1,4 +1,3 @@
-{% load staticfiles %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,6 +5,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Social Network</title>
+
+  {% load staticfiles %}
 
   <!-- favicon -->
   <link href="static/img/favicon.png" rel=icon>
@@ -28,103 +29,87 @@
   <link href="static/css/style.css" rel="stylesheet">
 </head>
 <body>
-  <div id="main-wrapper">
-  <!-- Page Preloader -->
-  <div id="preloader">
-      <div id="status">
-          <div class="status-mes"></div>
-      </div>
-  </div>
-  <!-- preloader -->
-
-  <div class="uc-mobile-menu-pusher">
   <div class="content-wrapper">
-  <section id="header_section_wrapper" class="header_section_wrapper">
-      <div class="container">
-          <div class="header-section">
-              <div class="row">
-                  <div class="col-md-4">
-                      <div class="left_section">
-                                              <span class="date">
-                                                  Sunday .
-                                              </span>
-                          <!-- Date -->
-                                              <span class="time">
-                                                  09 August . 2016
-                                              </span>
-                          <!-- Time -->
-                      </div>
-                      <!-- Left Header Section -->
-                  </div>
-                  <div class="col-md-4">
-                      <div class="logo">
-                          <a href="/"><img src="static/img/sn.jpeg"></a>
-                      </div>
-                      <!-- Logo Section -->
-                  </div>
-                  <div class="col-md-4">
-                      <div class="right_section">
-                          <ul class="nav navbar-nav">
-                              {% if username %}
-                                <li><a href="/auth/logout/">Вийти ({{ username }})</a></li>
-                              {% else %}
-                                <li><a href="/auth/login/">Ввійти</a></li>
-                              {% endif %}
-                              <li><a href="#">Register</a></li>
-                              {% block login %}{% endblock %}
-                          </ul>
-                      </div>
-                      <!-- Right Header Section -->
-                  </div>
-              </div>
-          </div>
-          <!-- Header Section -->
+    <section id="header_section_wrapper" class="header_section_wrapper">
+        <div class="container">
+            <div class="header-section">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="left_section">
+                            <span class="date">
+                                Sunday .
+                            </span>
+                            <!-- Date -->
+                            <span class="time">
+                                09 December . 2018
+                            </span>
+                            <!-- Time -->
+                        </div>
+                        <!-- Left Header Section -->
+                    </div>
+                    <div class="col-md-4">
+                        <div class="logo">
+                            <a href="/"><img src="static/img/sn.jpeg"></a>
+                        </div>
+                        <!-- Logo Section -->
+                    </div>
+                    <div class="col-md-4">
+                        <div class="right_section">
+                            <ul class="nav navbar-nav">
+                                {% if username %}
+                                  <li><a href="/auth/logout/">Вийти ({{ username }})</a></li>
+                                {% else %}
+                                  <li><a href="/auth/login/">Ввійти</a></li>
+                                  <li><a href="/auth/register/">Реєстрація</a></li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                        <!-- Right Header Section -->
+                    </div>
+                </div>
+            </div>
+            <!-- Header Section -->
 
-          <div class="navigation-section">
-              <nav class="navbar m-menu navbar-default">
-                  <div class="container">
-                      <div class="collapse navbar-collapse" id="#navbar-collapse-1">
-                          <ul class="nav navbar-nav main-nav">
-                              <li class="active"><a href="/">Головна</a></li>
-                              <li><a href="/">Мої пости</a></li>
-                              <li><a href="/">Новий пост</a></li>
-                          </ul>
-                      </div>
-                      <!-- .navbar-collapse -->
-                  </div>
-                  <!-- .container -->
-              </nav>
-              <!-- .nav -->
-          </div>
-          <!-- .navigation-section -->
-      </div>
-      <!-- .container -->
-  </section>
-  <!-- header_section_wrapper -->
+            <div class="navigation-section">
+                <nav class="navbar m-menu navbar-default">
+                    <div class="container">
+                        <ul class="nav navbar-nav main-nav">
+                            <li class="active"><a href="/">Головна</a></li>
+                            <li><a href="/">Мої пости</a></li>
+                            <li><a href="/">Новий пост</a></li>
+                        </ul>
+                    </div>
+                    <!-- .container -->
+                </nav>
+                <!-- .nav -->
+            </div>
+            <!-- .navigation-section -->
 
-  {% block content %}{% endblock %}
+            {% block content %}{% endblock %}
+            {% block login %}{% endblock %}
 
-  <section id="footer_section" class="footer_section">
-      <div class="footer_bottom_Section">
-          <div class="container">
-              <div class="row">
-                  <div class="footer">
-                      <div class="col-sm-12">
-                          <p>&copy; Всі права захищені ;)</p>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </section>
+        </div>
+        <!-- .container -->
+    </section>
+    <!-- header_section_wrapper -->
+
+
+
+    <section id="footer_section" class="footer_section">
+        <div class="footer_bottom_Section">
+            <div class="container">
+                <div class="row">
+                    <div class="footer">
+                        <div class="col-sm-12">
+                            <p>&copy; Всі права захищені ;)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
   </div>
   <!-- #content-wrapper -->
-
-  </div>
-  <!-- .offcanvas-pusher -->
-
-  </div>
-  <!-- #main-wrapper -->
 
   <!-- jquery Core-->
   <script src="assets/js/jquery-2.1.4.min.js"></script>
