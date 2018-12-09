@@ -5,6 +5,8 @@ from django.http.response import Http404
 from django.core.exceptions import ObjectDoesNotExist
 from django.template.context_processors import csrf
 from django.contrib import auth
+from django.contrib.auth.models import User
+from datetime import datetime
 from post.models import Post, Comments
 from post.forms import CommentForm
 
@@ -63,6 +65,8 @@ def addcomment(request, post_id):
         if form.is_valid():
             comment = form.save(commit=False)
             comment.comments_post = Post.objects.get(id=post_id)
+            comment.comments_date = datetime.now()
+            comment.comments_author = User.objects.get(id=request.user.id)
             form.save()
             request.session.set_expiry(10)
             request.session['pause'] = True

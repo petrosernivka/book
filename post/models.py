@@ -21,3 +21,4 @@ class Comments(models.Model):
     comments_date = models.DateTimeField()
     comments_text = models.TextField(verbose_name="Текст коментаря:")
     comments_post = models.ForeignKey('Post', on_delete=models.PROTECT)
+    comments_author = models.ForeignKey(User, on_delete=models.PROTECT)

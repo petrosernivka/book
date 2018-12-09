@@ -9,7 +9,9 @@
   <hr>
   <p>Коментарі:</p>
   {% for comment in comments %}
+      <p>{{ comment.comments_author.username }} - {{ comment.comments_date }}</p>
       <p>{{ comment.comments_text }}</p>
+      <hr>
   {% endfor %}
 
   {% if username %}
