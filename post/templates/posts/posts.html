@@ -15,7 +15,7 @@
                 <!-- entity_title -->
 
                 <div class="entity_meta">
-                    <a href="#">{{ post.post_date }}</a>, by: <a href="#">Автор поста</a>
+                    <a>{{ post.post_date }}</a>, by: <a>{{ post.post_author }}</a>
                 </div>
                 <!-- entity_meta -->
 
@@ -27,7 +27,7 @@
                         <span class="share_ic">Unlikes</span>
                     </a>
                     <span>
-                        <a href="single.html" target="_self"><i class="fa fa-comments-o"></i><b>4</b>
+                        <a><i class="fa fa-comments-o"></i><b>4</b>
                             <span class="share_ic">Comments</span>
                         </a>
                     </span>
@@ -48,4 +48,25 @@
     </section>
     <!-- entity_section -->
   {% endfor %}
+  {% if username %}
+    <div class="entity_comments">
+        <div class="entity_inner__title header_black">
+            <h2>Додати пост</h2>
+        </div>
+        <!--Entity Title -->
+
+        <div class="entity_comment_from">
+            <form action="/posts/addpost/" method="post">
+                <div class="form-group comment">
+                    {% csrf_token %}
+                    {{ form }}
+                </div>
+
+                <button type="submit" class="btn btn-submit red">Додати</button>
+            </form>
+        </div>
+        <!--Entity Comments From -->
+    </div>
+    <!--Entity Comments -->
+  {% endif %}
 {% endblock %}

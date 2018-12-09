@@ -8,12 +8,17 @@ from django.contrib import auth
 from django.contrib.auth.models import User
 from datetime import datetime
 from post.models import Post, Comments
-from post.forms import CommentForm
+from post.forms import PostForm, CommentForm
 
-# Create your views here.
 
 def posts(request):
-    return render(request, 'posts/posts.html', context={'posts': Post.objects.all(), 'username': auth.get_user(request).username})
+    post_form = PostForm
+    args = {}
+    args.update(csrf(request))
+    args['posts'] = Post.objects.all()
+    args['username'] = auth.get_user(request).username
+    args['form'] = post_form
+    return render(request, 'posts/posts.html', context=args)
 
 
 def post(request, post_id=1):
@@ -25,6 +30,19 @@ def post(request, post_id=1):
     args['form'] = comment_form
     args['username'] = auth.get_user(request).username
     return render(request, 'posts/post.html', context=args)
+
+
+def addpost(request):
+    if request.POST and ('pause' not in request.session):
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.post_date = datetime.now()
+            post.post_author = User.objects.get(id=request.user.id)
+            form.save()
+            request.session.set_expiry(10)
+            request.session['pause'] = True
+    return redirect('/')
 
 
 def addlike(request, post_id):

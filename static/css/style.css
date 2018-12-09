@@ -405,7 +405,7 @@ section {
 
 @media (min-width: 768px) {
     .navigation-section .navbar-nav {
-        margin: 0 34%;
+        margin: 0 0%;
     }
     .navbar-default {
         background-color: #fff;

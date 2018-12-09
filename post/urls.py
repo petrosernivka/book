@@ -23,5 +23,6 @@ urlpatterns = [
     path('posts/addlike/<post_id>/', addlike),
     path('posts/addunlike/<post_id>/', addunlike),
     path('posts/addcomment/<post_id>/', addcomment),
+    path('posts/addpost/', addpost),
     path('', posts),
 ]
