@@ -40,14 +40,14 @@
 
               <div class="readers_comment">
                   <div class="entity_inner__title header_purple">
-                      <h2>Коментарі</h2>
+                      <h3>Коментарі</h3>
                   </div>
                   <!-- entity_title -->
 
                   {% for comment in comments %}
                       <div class="media">
                           <div class="media-body">
-                              <h2 class="media-heading"><a>{{ comment.comments_author.username }} - {{ comment.comments_date }}</a></h2>
+                              <h4 class="media-heading"><a>{{ comment.comments_author.username }} - {{ comment.comments_date }}</a></h4>
                               {{ comment.comments_text }}
                           </div>
                       </div>
